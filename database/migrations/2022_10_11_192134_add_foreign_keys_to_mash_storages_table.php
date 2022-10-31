@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddForeignKeysToMashStoragesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('mash_storages', function (Blueprint $table) {
+            $table->foreign(['fruit_id'], 'mash_storages_ibfk_1')->references(['id'])->on('fruits');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('mash_storages', function (Blueprint $table) {
+            $table->dropForeign('mash_storages_ibfk_1');
+        });
+    }
+}
