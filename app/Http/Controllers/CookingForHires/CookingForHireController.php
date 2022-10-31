@@ -29,7 +29,7 @@ class CookingForHireController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate($this->model::$createRules);
-
+        //ASAD
         $params = Param::get();
         $correction = Correction::where('temperature', $request->temperature)->first()->correction;
         $data['finished_palinka'] = $data['unadjusted_palinka'] * ($data['original_alcohol_degree'] + $correction) / $data['alcohol_degree'];
